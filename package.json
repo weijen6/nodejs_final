@@ -1,0 +1,25 @@
+{
+  "name": "Final_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weijen6/nodejs_final.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weijen6/nodejs_final/issues"
+  },
+  "homepage": "https://github.com/weijen6/nodejs_final#readme"
+}
