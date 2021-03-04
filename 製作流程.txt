@@ -1,0 +1,126 @@
+1.下指令將老師的專案下載回來
+git clone https://github.com/Fisheep1207/Final_project
+
+2.
+routers中的
+index.html
+main_router.js
+fisheep.js
+這三個檔案，有fisheep的都改成自己的姓名(包含fisheep.js)
+
+3.去firebase新增專案
+a.登入帳號 (改語言為繁體)
+b.前往主控台
+c.打專案名稱(如nodejs-final)繼續->繼續
+d.數據分析位置 -> 台灣
+  都打勾
+  建立專案
+e.左側選Cloud Firestore -> 上左 建立資料庫 按鈕
+  以 測試模式 啟動
+  asia-east2
+f.新增集合 ClassA
+新增文件
+student1
+name string Alice
+age number 20
+gender string Female
+儲存
+新增文件
+student2
+name string Bob
+age number 19
+gender string Male
+儲存
+新增文件
+student3
+name string Weijen6     <---自己名字
+age number 100
+gender string Male
+phone string 0987654321
+儲存
+g.點左上 專案總覽 -> 點中間新增應用程式 網頁 圖鈕
+註冊應用程式 -> 輸入 final (不要打勾代管功能) -> 按註冊應用程式
+
+copy script 去替換public\classA.html中的script區塊
+但注意不要蓋掉原script區塊最後一行 const db = firebase.firestore();
+
+複製這行到下一行，並將firebase-analytics改成firebase-firestore
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+就變成
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+都完成後，vscode開啟Final_project資料夾
+新增控制台
+
+執行 node main.js 
+在瀏覽器查看有沒有 This is main page.的文字
+127.0.0.1:8888
+接著去看有沒有使用者資料
+127.0.0.1:8888/user
+點自己的名字，去看about有沒有圖片
+回來再點 classA，看能不能新增刪除資料
+***新增或刪除，都要重新整理，才能看到結果
+
+
+把github及heroku網址放在討論區
+
+去GitHub網站，右上 + 新增 New repository
+輸入repo名，如
+nodejs-final
+
+按Create repository綠按鈕
+
+
+刪除隱藏資料夾 .git  <--這有老師的設定
+刪除 node_modules 資料夾 package.json、package-lock.json
+vscode控制台中按順序輸入
+
+npm cache clean --force
+del C:%HOMEPATH%\AppData\Roaming\npm-cache\_logs\*.*
+npm init -y
+npm install express
+檢查 package.json中 "scripts" -> "test" 下方有沒有 start?
+沒有就補上 ,"start": "node main.js" <<---注意上一行要加逗號
+git init
+git config --global core.autocrlf false <--避免亂改原始碼
+git add .		<--這行改成上傳全部
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/weijen6/nodejs_final.git
+git push -u origin main
+
+如果做錯了，在github首頁上按Settings，再滑鼠滾到最下面，有Delete this repository刪除這專案
+再到Final_project刪除.git隱藏資料夾
+就可以重做一次
+
+去heroku註冊一個帳號
+新增專案
+專案名稱避免和別人重複，最好加上自己的名字，如
+nodejs-final-weijen6
+直接新增
+完成後，在畫面下方有github，點github -> Connect to GitHub
+出現Github驗證heroku畫面，按認證就可以了
+接著輸入Github的專案名，nodejs-final
+按Search，找到後按Connect
+連接成功後，下方有Enable Automatic Deploys (啟用自動部署)
+再滾到畫面上方，點Open app看看部署成功沒
+如果成功，那網址就是你的專案網址
+
+查看heroku 的overview -> Latest activity
+如果沒更新，就改一下readme.md 內容，再做一次git
+
+git add .
+git commit -m "redo 1" <---每次都要不一樣
+git push
+
+
+部署失敗陷井
+main_router.js 中設定js檔名和資料夾中，大小寫一定要一致
+如
+let Weijen6 = require('./Weijen6.js');
+實際一定也是
+Weijen6.js
+
+firebase讀不到問題
+注意app.js中 ClassA <--大小寫 和firebase中是否一致
